@@ -10,14 +10,15 @@ class App extends Component {
   update(e){
     console.log(e.target.name)
     this.setState({
-      title : e.target.value
+      title : e.target.value,
+
     });
   }
   render(){
     return (
       <div>
         <Hello hello={this.state.title}/>
-        <Input name='Input firstName'/>
+        <Input update={this.update.bind(this)} name='Input firstName'/>
         <Input name='Input lastName'/>
       </div>
     )
@@ -35,7 +36,7 @@ class Input extends Component {
   render() {
     return (
       <div>
-        <input type="text"  name={this.props.name}/>
+        <input type="text" onChange={this.props.update}  name={this.props.name}/>
       </div>
     )
   }
